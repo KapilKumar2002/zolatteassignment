@@ -5,6 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:zollate/screens/homescreen.dart';
 import 'package:zollate/screens/login.dart';
 import 'package:zollate/screens/otpscreen.dart';
+import 'package:zollate/screens/phoneauthdone.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -33,12 +35,13 @@ class MyApp extends StatelessWidget {
                 ),
               );
             } else if (user.hasData) {
-              return const HomeScreen();
+              return FirebaseAuth.instance.currentUser!.phoneNumber == ""
+                  ? HomeScreen()
+                  : PhoneAuthDone();
             } else {
               return const LoginScreen();
             }
           }),
-      // home: OTPScreen(),
     );
   }
 }

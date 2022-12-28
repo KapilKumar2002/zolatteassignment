@@ -4,6 +4,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:zollate/screens/homescreen.dart';
+import 'package:zollate/screens/phoneauthdone.dart';
 import 'package:zollate/services/phone_auth_services.dart';
 
 class OTPScreen extends StatefulWidget {
@@ -78,8 +79,9 @@ class _OTPScreenState extends State<OTPScreen> {
                     Get.snackbar("Error", "${e.toString()}");
                   }
                   _otpCorrect
-                      ? Get.to(() => HomeScreen())
+                      ? Get.to(() => PhoneAuthDone())
                       : Get.snackbar("Error", "OTP is not correct");
+                  _pinPutController.text = "";
                 },
                 child: Text("Continue"))
           ],

@@ -60,6 +60,8 @@ class _MobileAuthScreenState extends State<MobileAuthScreen> {
                   await verifyPhoneNumber(_controller.text).whenComplete(() =>
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => OTPScreen())));
+
+                  _controller.text = "";
                 },
                 child: Text(
                   'Continue',

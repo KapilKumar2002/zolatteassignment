@@ -20,9 +20,7 @@ class _Screen1State extends State<Screen1> {
       appBar: AppBar(actions: [
         IconButton(
             onPressed: () async {
-              user!.phoneNumber == null
-                  ? await FirebaseServices().googleSignOut()
-                  : await _auth.signOut();
+              await FirebaseServices().googleSignOut();
               Get.to(() => LoginScreen());
             },
             icon: Icon(Icons.exit_to_app))
